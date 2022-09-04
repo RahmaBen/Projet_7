@@ -618,6 +618,19 @@
     width: 100%;
     padding: 1.5em;
   }
+  .show-article2 img{
+    width: 180px !important ;
+   
+  };
+  .show-article2 img{
+    width: 230px !important ;
+    border-radius: 0% ;
+    transform: none ;
+    height: 255px;
+    border-radius: 0%;
+   
+  
+  };
   .container .comment-card h3 {
     font-size: 0.8em;
     display: -webkit-box;
@@ -802,6 +815,10 @@
     width: 100%;
     padding: 1.5em;
   }
+  .show-article2 img{
+    width: 230px !important ;
+   
+  };
   .container .comment-card h3 {
     font-size: 0.8em;
     display: -webkit-box;
