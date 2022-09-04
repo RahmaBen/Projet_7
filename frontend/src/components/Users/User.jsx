@@ -112,8 +112,9 @@ function User ()  {
                         <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/imageupdate/" + userId)}}>Modifier</button>
                     </div>
                     <div className= "show-article">
-                        <h2>{user.name} {user.lastName}</h2>
-                        <p>{user.bio}</p>
+                    <p> Profil de : </p> <br></br>
+                        <h2>{user.name}  {user.lastName} </h2>
+                      
                     </div>
                     {idUser}
                 </div>
