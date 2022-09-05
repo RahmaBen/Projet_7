@@ -14,7 +14,7 @@ import './css/App.css';
 
 // Composant App
 function App() {
-  // auth initialisé false
+  // notre state auth initialisé false
   const [auth, setAuth] = React.useState(false);
 
   // gestion des cookies

@@ -12,15 +12,13 @@ const sanitize = require('mongo-sanitize');
 
 const validPsw = new pswValidator();
 validPsw
-  // .is().min(8)
   .is().max(16)
-  // .has().uppercase()
   .has().lowercase()
-  // .has().digits()
   .has().not().spaces()
   .has().symbols()
 
 // Functions
+
 exports.signup = (req, res, next) => {
   if (mailRegex.test(req.body.email) && validPsw.validate(req.body.password)) {
     //  rendre le hachage imprévisible avec salt
@@ -40,12 +38,10 @@ exports.signup = (req, res, next) => {
 
               ...req.body,
               imageUrl: "/images/default-avatar.png",
-              cover: "/images/default-cover.jpg",
               password: hash,
               admin: false,
               registerAt: new Date(),
-              postsCount: 0,
-              unreadNotify: 0,
+
 
             });
 

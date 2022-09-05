@@ -11,7 +11,6 @@ exports.findAllLikes = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
-
 // créer un like
 exports.createLike = (req, res, next) => {
     const likeObject = req.body;

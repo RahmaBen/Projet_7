@@ -22,7 +22,7 @@ exports.findOneUser = (req, res, next) => {
 };
 
 
-//   modifier un utilisateur
+//   modifier les informations d'un utilisateur
 exports.modifyUser = (req, res, next) => {
     // éléments de la requète
     const name = req.body.name;
@@ -34,7 +34,6 @@ exports.modifyUser = (req, res, next) => {
     }
 
     if (req.file) {
-
         // recuperer notre objet du base de donnée
         User.findOne({ _id: req.params.id })
 
@@ -52,7 +51,6 @@ exports.modifyUser = (req, res, next) => {
     // gestion d'ajout/modification image de profil
     const userObject = req.file ?
         {
-
             // creer l'url de l'image
             imageUrl: `/images/${req.file.filename}`,
 
@@ -70,7 +68,7 @@ exports.modifyUser = (req, res, next) => {
 };
 
 
-
+// supprimer un compte
 exports.deleteUser = (req, res, next) => {
 
     User.findOne({ _id: req.params.id })

@@ -4,7 +4,7 @@ const Comment = require("../models/comment");
 
 
 
-// lire tous articles
+// lire tous les posts
 exports.findAllArticles = (req, res, next) => {
     Article.find().sort({ createdAt: 'desc' })
         .then(articles => {
@@ -13,26 +13,11 @@ exports.findAllArticles = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
-exports.findArticlesByUserId = (req, res, next) => {
-    Article.find({ userId: req.params.id }).sort({ createdAt: 'desc' })
-        .then(articles => {
-            res.status(200).json({ data: articles });
-        })
-        .catch(error => res.status(400).json({ error }));
-};
-
-
-// logique métier : créer un article
+// créer un post
 exports.createArticle = (req, res, next) => {
     // éléments de la requète
     const articleObject = JSON.parse(req.body.article);
-    // const title = articleObject.title;
     const content = articleObject.content;
-
-    // // vérification que tous les champs sont remplis
-    // if (content === null || content === '') {
-    //     return res.status(400).json({ 'error': "Veuillez remplir les champs 'titre' et 'contenu' pour créer un article" });
-    // }
     // Création d'un nouvel objet article
     if (req.file) {
         const articleF = new Article({
@@ -57,8 +42,18 @@ exports.createArticle = (req, res, next) => {
 
 };
 
+// afficher les posts crée par le user
+exports.findArticlesByUserId = (req, res, next) => {
+    Article.find({ userId: req.params.id }).sort({ createdAt: 'desc' })
+        .then(articles => {
+            res.status(200).json({ data: articles });
+        })
+        .catch(error => res.status(400).json({ error }));
+};
 
-// logique métier : lire un article par son id
+
+
+// afficher un seul post
 exports.findOneArticle = (req, res, next) => {
     Article.findOne({ _id: req.params.id })
         .then(article => { res.status(200).json(article) })
@@ -66,17 +61,11 @@ exports.findOneArticle = (req, res, next) => {
 };
 
 
-//   modifier un article
+//   modifier un post
 exports.modifyArticle = (req, res, next) => {
     // éléments de la requète
-    // const title = req.body.title;
     const articleObject = JSON.parse(req.body.article);
     const content = articleObject.content;
-
-    // vérification que tous les champs sont remplis
-    // if (content === null || content === '') {
-    //     return res.status(400).json({ 'error': "Veuillez remplir le champs  'contenu' pour modifier un article" });
-    // }
 
     if (req.file) {
         // recuperer notre objet du base de donnée
@@ -108,7 +97,9 @@ exports.modifyArticle = (req, res, next) => {
         .then(() => res.status(200).json({ message: 'Article modifié !' }))
         .catch(error => res.status(400).json({ error }));
 };
-// supprimer un article
+
+
+// supprimer un post
 exports.deleteArticle = (req, res, next) => {
     Article.deleteOne({ _id: req.params.id })
         .then(() => {

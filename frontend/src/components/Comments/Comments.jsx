@@ -75,7 +75,7 @@ class Comments extends React.Component {
             [name]: value
         })
     }
-
+// la methode de classe pour ajouter un comment
     handleSubmit (e) {
         e.preventDefault()
 

@@ -11,7 +11,7 @@ const articleCtrl = require("../controllers/article");
 router.get('/', auth, userCtrl.findAllUsers);
 router.get('/:id', auth, userCtrl.findOneUser);
 router.get('/:id/articles', auth, articleCtrl.findArticlesByUserId);
-router.put('/:id', multer, auth, userCtrl.modifyUser);
+router.put('/:id', auth, multer, userCtrl.modifyUser);
 router.delete('/:id', auth, userCtrl.deleteUser);
 
 // EXPORTS
